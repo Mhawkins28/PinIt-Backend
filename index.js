@@ -1,9 +1,11 @@
 const express = require("express");
 const app = express();
 const PORT = 3001;
+const mongoose = require("mongoose");
 const morgan = require("morgan");
 const cors = require("cors");
 
+require("dotenv").config();
 //routes import
 // const xyzRoutes = require("./routes/xyzRoutes");
 
