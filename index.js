@@ -7,7 +7,7 @@ const cors = require("cors");
 
 require("dotenv").config();
 //routes import
-// const xyzRoutes = require("./routes/xyzRoutes");
+const pinRoutes = require("./routes/pinRoutes");
 
 //db
 require("./db/connection");
@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 //routes use
-// app.use("/xyz", xyzRoutes);
+app.use("/pins", pinRoutes);
 
 app.get("/", (req, res) => {
   res.json("Welcome to Project 3");
