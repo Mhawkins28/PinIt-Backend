@@ -12,8 +12,8 @@ const PinSchema = mongoose.Schema({
   Images: [String],
   Description: String,
   Owner: {
-    Type: Schema.Types.ObjectId,
-    Ref: "User",
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
     required: false,
   },
 });
