@@ -2,15 +2,13 @@ const mongoose = require("mongoose"); // require mongoose
 const Schema = mongoose.Schema; // create a shorthand for the mongoose Schema constructor
 
 const PinSchema = mongoose.Schema({
-  Name: String,
-  Address: String,
-  City: String,
-  Coordinates: {
-    lng: Number,
-    lat: Number,
-  },
-  Images: [String],
-  Description: String,
+  name: String,
+  address: String,
+  city: String,
+  lng: Number,
+  lat: Number,
+  images: [String],
+  description: String,
   Owner: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
