@@ -12,6 +12,8 @@ const homeMap = (req, res) => {
   });
 };
 
+
+
 const createNewPin = (req, res) => {
   //create new pin
   Pin.create(req.body, (err, newPin) => {
@@ -26,14 +28,55 @@ const createNewPin = (req, res) => {
       // });
   });
 
+};
+
+
+
+const editPin = (req, res) => {
+
+  Pin.findByIdAndUpdate(req.params.id, req.body, (err, pin) => {
+    if (err) {
+        res.status(400).json(err)
+        return
+    }
+
+    Pin.find({}, (error, pins) => {
+        res.json(pins)
+    })
+
+})
 
 };
 
-const editPin = (req, res) => {};
 
-const deletePin = (req, res) => {};
 
-const getOnePin = (req, res) => {};
+const deletePin = (req, res) => {
+  let {id} = req.params
+
+  Pin.findByIdAndDelete(id, (err, deletedPin) => {
+      if (err) {
+          res.status(400).json(err)
+          return
+      }
+      
+      res.json(deletedPin)
+  })
+};
+
+
+
+
+const getOnePin = (req, res) => {
+
+  Pin.findById(req.params.id, (err, pin) => {
+    if (err) {
+        res.status(400).json(err)
+        return
+    }
+    res.json(pin)
+})
+
+};
 
 module.exports = {
   homeMap,
