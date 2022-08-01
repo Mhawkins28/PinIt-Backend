@@ -41,3 +41,4 @@ passport.deserializeUser(function(id, done) {
 })
 
 // ** Google OAuth is set up on localhost:3001 in Google Dev Console
+// Passport is NOT set up

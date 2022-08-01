@@ -11,7 +11,8 @@ async function signup(req, res) {
     res.json({ token });
   } catch (err) {
     // Probably a duplicate email
-    res.status(400).json(err);
+    // res.status(400).json(err);
+    console.log('error')
   }
 }
 
@@ -28,7 +29,8 @@ async function login(req, res) {
       }
     });
   } catch (err) {
-    return res.status(400).json(err);
+    // return res.status(400).json(err);
+    console.log('user logged in')
   }
 }
 

@@ -21,11 +21,11 @@ const createNewPin = (req, res) => {
         res.status(400).json(err);
         return;
       }
-      res.json(newPin);
+      // res.json(newPin);
       // newPin.owner = req.user._id
-      // Pin.save((err, newPin) => {
-      //   res.json(newPin);
-      // });
+      Pin.save((err, newPin) => {
+        res.json(newPin);
+      });
   });
 
 };
