@@ -1,18 +1,32 @@
 const User = require("../models/User");
 const Pin = require("../models/Pin");
 
+// const homeMap = (req, res) => {
+//   //load homepage map
+//   Pin.find({}, (err, pins) => {
+//   if (err) {
+//       res.status(400).json(err);
+//       return;
+//     }
+
+//     res.json(pins);
+//   });
+// };
+
 const homeMap = (req, res) => {
   //load homepage map
   Pin.find({})
-    .populate("Owner")
-    .exec((err, pins) => {
-      if (err) {
-        res.status(400).json(err);
-        return;
-      }
-      res.json(pins);
-    });
+  .populate("Owner")
+  .exec((err, pins) => {
+  if (err) {
+      res.status(400).json(err);
+      return;
+    }
+
+    res.json(pins);
+  });
 };
+
 
 const createNewPin = (req, res) => {
   //create new pin
