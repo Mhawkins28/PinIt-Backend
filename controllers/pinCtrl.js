@@ -23,9 +23,9 @@ const createNewPin = (req, res) => {
     }
     // res.json(newPin);
     // newPin.owner = req.user._id
-    Pin.save((err, newPin) => {
-      res.json(newPin);
-    });
+    // Pin.save((err, newPin) => {
+    res.json(newPin);
+    // });
   });
 };
 
