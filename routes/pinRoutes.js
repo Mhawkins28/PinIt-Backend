@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const pinCtrl = require("../controllers/pinCtrl");
-const upload = require('../db/multer');
+const upload = require("../db/multer");
 
 // herokuapp.placesga/pins/:id
 // loads pin page with all info INCLUDING users who have pinned this place with link to user page
@@ -16,10 +16,8 @@ router.delete("/:id", pinCtrl.deletePin);
 
 router.get("/:id", pinCtrl.getOnePin);
 
-upload.single('image')
+router.get("/userPage/:id", pinCtrl.findUserPins);
+
+upload.single("image");
 
 module.exports = router;
-
-
-
-

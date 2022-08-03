@@ -1,6 +1,6 @@
 const User = require("../models/User");
 const Pin = require("../models/Pin");
-const cloudinary = require('../db/cloudinary')
+const cloudinary = require("../db/cloudinary");
 
 // const homeMap = (req, res) => {
 //   //load homepage map
@@ -17,17 +17,16 @@ const cloudinary = require('../db/cloudinary')
 const homeMap = (req, res) => {
   //load homepage map
   Pin.find({})
-  .populate("Owner")
-  .exec((err, pins) => {
-  if (err) {
-      res.status(400).json(err);
-      return;
-    }
+    .populate("Owner")
+    .exec((err, pins) => {
+      if (err) {
+        res.status(400).json(err);
+        return;
+      }
 
-    res.json(pins);
-  });
+      res.json(pins);
+    });
 };
-
 
 const createNewPin = (req, res) => {
   //create new pin
@@ -44,11 +43,9 @@ const createNewPin = (req, res) => {
   });
 };
 
-
-
 // async function createMeal(req, res) {
-//   try {    
-//       const result = await cloudinary.uploader.upload(req.file.path) 
+//   try {
+//       const result = await cloudinary.uploader.upload(req.file.path)
 //       const newMeal = new Recipe({
 //           mealName: req.body.mealName,
 //           image: result.secure_url,
@@ -62,14 +59,11 @@ const createNewPin = (req, res) => {
 //           calories: req.body.calories,
 //           owner: req.user._id
 //       })
-//          await newMeal.save(() => res.redirect('/mealPrep'))     
+//          await newMeal.save(() => res.redirect('/mealPrep'))
 //   } catch (err) {
 //   console.log(err)
 //   }
 // }
-
-
-
 
 const editPin = (req, res) => {
   Pin.findByIdAndUpdate(req.params.id, req.body, (err, pin) => {
@@ -83,8 +77,6 @@ const editPin = (req, res) => {
     });
   });
 };
-
-
 
 // async function editMeal(req, res) {
 //   try {
@@ -116,7 +108,7 @@ const editPin = (req, res) => {
 //   try {
 //       let mealPrep = await Recipe.findById(req.params.id);
 //       await cloudinary.uploader.destroy(mealPrep.cloudinary_id)
-//       const result = await cloudinary.uploader.upload(req.file.path)  
+//       const result = await cloudinary.uploader.upload(req.file.path)
 //       const data = {
 //           mealName: req.body.mealName || mealPrep.mealName,
 //           image: result.secure_url || mealPrep.image,
@@ -137,7 +129,6 @@ const editPin = (req, res) => {
 //   }
 // }
 
-
 const deletePin = (req, res) => {
   let { id } = req.params;
 
@@ -151,7 +142,6 @@ const deletePin = (req, res) => {
   });
 };
 
-
 // async function deleteMeal(req, res) {
 //     try {
 //         let mealPrep = await Recipe.findById(req.params.id);
@@ -163,8 +153,6 @@ const deletePin = (req, res) => {
 //     }
 // }
 
-
-
 const getOnePin = (req, res) => {
   Pin.findById(req.params.id, (err, pin) => {
     if (err) {
@@ -175,10 +163,25 @@ const getOnePin = (req, res) => {
   });
 };
 
+const findUserPins = (req, res) => {
+  //load homepage map
+  Pin.find({ Owner: `${req.params.id}` })
+    .populate("Owner")
+    .exec((err, pins) => {
+      if (err) {
+        res.status(400).json(err);
+        return;
+      }
+
+      res.json(pins);
+    });
+};
+
 module.exports = {
   homeMap,
   createNewPin,
   editPin,
   deletePin,
   getOnePin,
+  findUserPins,
 };
