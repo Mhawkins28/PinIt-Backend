@@ -6,8 +6,8 @@ const upload = require("../db/multer");
 // loads pin page with all info INCLUDING users who have pinned this place with link to user page
 router.get("/", pinCtrl.homeMap);
 
-router.post("/", pinCtrl.createNewPin);
-// router.post("/", upload.single('image'), pinCtrl.createNewPin);
+// router.post("/", pinCtrl.createNewPin);
+router.post("/", upload.single('image'), pinCtrl.createNewPin);
 
 router.put("/:id", pinCtrl.editPin);
 // router.put("/:id", upload.single('image'), pinCtrl.editPin);

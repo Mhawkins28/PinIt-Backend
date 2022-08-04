@@ -1,6 +1,6 @@
 const User = require("../models/User");
 const Pin = require("../models/Pin");
-const cloudinary = require("../db/cloudinary");
+const {cloudinary} = require("../db/cloudinary");
 const path = require("path")
 
 // const homeMap = (req, res) => {
@@ -32,7 +32,7 @@ const homeMap = (req, res) => {
 const createNewPin = async (req, res) => {
   //create new pin
 
-  // const {image} = req.body
+  // const { image } = req.body.image
   // const uploadedImage = await cloudinary.uploader.upload(image,
   // { 
   //   upload_preset: 'unsigned_upload',
@@ -46,47 +46,46 @@ const createNewPin = async (req, res) => {
   //   console.log(result); });
   //   res.status(200).json(result)
 
-  //   try {
-  //     res.status(200).json(uploadedImage)
-  //   } catch(err) {
-  //     console.log(err)
-  //   }
+  //         const newPin = new Pin({
+  //         name: req.body.name,
+  //         address: req.body.address,
+  //         city: req.body.city,
+  //         lng: req.body.lng,
+  //         lat: req.body.lat,
+  //         image: result.secure_url,
+  //         cloudinary_id: result.public_id,
+  //         description: req.body.description,
+  //         owner: req.user._id
+  //     })
+  //        await newPin.save(() => res.json(newPin))
+  //        console.log(uploadedImage)
+
+    // try {
+    //   res.status(200).json(uploadedImage)
+    // } catch(err) {
+    //   console.log(err)
+    // }
 
   Pin.create(req.body, (err, newPin) => {
     if (err) {
       res.status(400).json(err);
       return;
     }
+    
     // res.json(newPin);
     // newPin.owner = req.user._id
     // Pin.save((err, newPin) => {
-      // const fileStr = req.body.data;
-      // console.log(req.body.data)
-      // const uploadResponse = await cloudinary.uploader.upload(fileStr, {
-      //     upload_preset: 'dev_setups',
-      // });
-      // console.log(uploadResponse);
-      res.json(newPin);
+    res.json(newPin);
     // });
   });
-
-
-
-
-
-
-  // Pin.create(req.body, (err, newPin) => {
-  //   if (err) {
-  //     res.status(400).json(err);
-  //     return;
-  //   }
-  //   // res.json(newPin);
-  //   // newPin.owner = req.user._id
-  //   // Pin.save((err, newPin) => {
-  //   res.json(newPin);
-  //   // });
-  // });
 };
+
+
+
+
+
+
+
 
 
 // const createNewPin = async (req, res) => {
