@@ -18,6 +18,4 @@ router.get("/:id", pinCtrl.getOnePin);
 
 router.get("/userPage/:id", pinCtrl.findUserPins);
 
-upload.single("image");
-
 module.exports = router;

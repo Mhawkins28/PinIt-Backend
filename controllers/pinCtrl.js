@@ -1,6 +1,7 @@
 const User = require("../models/User");
 const Pin = require("../models/Pin");
 const cloudinary = require("../db/cloudinary");
+const path = require("path")
 
 // const homeMap = (req, res) => {
 //   //load homepage map
@@ -28,8 +29,29 @@ const homeMap = (req, res) => {
     });
 };
 
-const createNewPin = (req, res) => {
+const createNewPin = async (req, res) => {
   //create new pin
+
+  // const {image} = req.body
+  // const uploadedImage = await cloudinary.uploader.upload(image,
+  // { 
+  //   upload_preset: 'unsigned_upload',
+  //   allowed_formats: ['png', 'jpg', 'jpeg', 'svg', 'ico', 'jfif', 'webp']
+  // }, 
+  // function(error, result) {
+  //   if (error) {
+  //     console.log(error)
+  //   }
+
+  //   console.log(result); });
+  //   res.status(200).json(result)
+
+  //   try {
+  //     res.status(200).json(uploadedImage)
+  //   } catch(err) {
+  //     console.log(err)
+  //   }
+
   Pin.create(req.body, (err, newPin) => {
     if (err) {
       res.status(400).json(err);
@@ -38,32 +60,55 @@ const createNewPin = (req, res) => {
     // res.json(newPin);
     // newPin.owner = req.user._id
     // Pin.save((err, newPin) => {
-    res.json(newPin);
+      // const fileStr = req.body.data;
+      // console.log(req.body.data)
+      // const uploadResponse = await cloudinary.uploader.upload(fileStr, {
+      //     upload_preset: 'dev_setups',
+      // });
+      // console.log(uploadResponse);
+      res.json(newPin);
     // });
   });
+
+
+
+
+
+
+  // Pin.create(req.body, (err, newPin) => {
+  //   if (err) {
+  //     res.status(400).json(err);
+  //     return;
+  //   }
+  //   // res.json(newPin);
+  //   // newPin.owner = req.user._id
+  //   // Pin.save((err, newPin) => {
+  //   res.json(newPin);
+  //   // });
+  // });
 };
 
-// async function createMeal(req, res) {
+
+// const createNewPin = async (req, res) => {
+//   //create new pin
 //   try {
 //       const result = await cloudinary.uploader.upload(req.file.path)
-//       const newMeal = new Recipe({
-//           mealName: req.body.mealName,
+//       const newPin = new Pin({
+//           name: req.body.name,
+//           address: req.body.address,
+//           city: req.body.city,
+//           lng: req.body.lng,
+//           lat: req.body.lat,
 //           image: result.secure_url,
 //           cloudinary_id: result.public_id,
-//           notes: req.body.notes,
-//           ingredients: req.body.ingredients,
-//           instructions: req.body.instructions,
-//           protein: req.body.protein,
-//           fat: req.body.fat,
-//           carbs: req.body.carbs,
-//           calories: req.body.calories,
+//           description: req.body.description,
 //           owner: req.user._id
 //       })
-//          await newMeal.save(() => res.redirect('/mealPrep'))
+//          await newPin.save(() => res.json(newPin))
 //   } catch (err) {
 //   console.log(err)
 //   }
-// }
+// };
 
 const editPin = (req, res) => {
   Pin.findByIdAndUpdate(req.params.id, req.body, (err, pin) => {
