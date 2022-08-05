@@ -7,9 +7,8 @@ const PinSchema = mongoose.Schema({
   city: String,
   lng: Number,
   lat: Number,
-  // images: [String],
   image: String,
-	// cloudinary_id: String,
+  image_id: String,
   description: String,
   Owner: {
     type: mongoose.Schema.Types.ObjectId,

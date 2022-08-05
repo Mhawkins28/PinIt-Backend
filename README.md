@@ -83,3 +83,29 @@ A link to the project's issue tracker
 https://github.com/JMMZ-GA/Project-3-Backend
 <br>
 https://github.com/JMMZ-GA/Project-3-UI
+
+
+### List of models and their properties
+
+\*\* Models for MVP
+
+User {
+
+    Username: String,
+    Password: String,
+
+}
+
+Pins {
+
+    Name: String,
+    Address: String,
+    City: String,
+    Coordinates: [ Number, Number ],
+    Images: [ String ],
+    Description: String
+    Owner: {
+    Type: Schema.Types.ObjectId,
+    Ref: “User”
+  }
+}

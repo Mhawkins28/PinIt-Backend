@@ -11,7 +11,7 @@ const passport = require("passport");
 const session = require("express-session");
 const cookieSession = require("cookie-session");
 var path = require('path');
-const {cloudinary} = require('./db/cloudinary');
+const cloudinary = require('./db/cloudinary');
 
 //db
 require("./db/connection");
