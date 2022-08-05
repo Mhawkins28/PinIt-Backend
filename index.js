@@ -1,13 +1,15 @@
 const express = require("express");
 const app = express();
-const PORT = 3001;
+const normalizePort = require('normalize-port');
+const PORT = normalizePort(process.env.PORT || '3001');
 const mongoose = require("mongoose");
 const morgan = require("morgan");
 const cors = require("cors");
-
-require("dotenv").config();
-//routes import
-// const xyzRoutes = require("./routes/xyzRoutes");
+const passport = require("passport");
+const session = require("express-session");
+const cookieSession = require("cookie-session");
+const path = require('path');
+const cloudinary = require('./db/cloudinary');
 
 //db
 require("./db/connection");
