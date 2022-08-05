@@ -1,10 +1,9 @@
 require("dotenv").config();
 
-
 const express = require("express");
 const app = express();
 const normalizePort = require('normalize-port');
-const PORT = normalizePort(process.env.PORT || '3001');
+const PORT = normalizePort(process.env.PORT);
 const mongoose = require("mongoose");
 const morgan = require("morgan");
 const cors = require("cors");
