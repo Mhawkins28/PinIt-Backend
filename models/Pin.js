@@ -1,5 +1,5 @@
-const mongoose = require("mongoose"); // require mongoose
-const Schema = mongoose.Schema; // create a shorthand for the mongoose Schema constructor
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
 const PinSchema = mongoose.Schema({
   name: String,

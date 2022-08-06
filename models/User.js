@@ -10,10 +10,6 @@ const UserSchema = new mongoose.Schema({
   password: String,
   // email: String,
   // googleId: String,
-
-  // name: String,
-  // email: String,
-  // googleId: String,
 });
 
 UserSchema.set("toJSON", {

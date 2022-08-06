@@ -63,17 +63,6 @@ const deletePin = (req, res) => {
 
 };
 
-// async function deleteMeal(req, res) {
-//     try {
-//         let mealPrep = await Recipe.findById(req.params.id);
-//         await cloudinary.uploader.destroy(mealPrep.cloudinary_id)
-//         await mealPrep.remove()
-//         res.redirect('/mealPrep');
-//     } catch (err) {
-//         console.log(err)
-//     }
-// }
-
 const getOnePin = (req, res) => {
   Pin.findById(req.params.id, (err, pin) => {
     if (err) {
